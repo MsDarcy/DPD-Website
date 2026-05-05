@@ -312,13 +312,14 @@
     margin-bottom:6px;
   }
 
-  /* formerly known as — BELOW name/title */
+  /* formerly known as — BELOW name/title (lightened for ≥7:1 on var(--surface)) */
   .exec-formerly {
     font-family:'Space Mono',monospace;
-    font-size:0.58rem;
-    letter-spacing:0.18em;
+    font-size:clamp(11px,0.78rem,13px);
+    font-weight:400;
+    letter-spacing:0.1em;
     text-transform:uppercase;
-    color:var(--dim);
+    color:#c9c0dc;
     margin-bottom:14px;
     font-style:italic;
   }
@@ -414,17 +415,8 @@
     font-size:clamp(2rem,4vw,2.8rem);
     font-weight:900;
     color:var(--pink);
-    margin-bottom:4px;
-    line-height:1.1;
-  }
-
-  .human-title {
-    font-family:'Space Mono',monospace;
-    font-size:0.6rem;
-    letter-spacing:0.2em;
-    text-transform:uppercase;
-    color:var(--muted);
     margin-bottom:24px;
+    line-height:1.1;
   }
 
   .human-bio {
@@ -460,10 +452,17 @@
     font-family:'Space Mono',monospace;
     font-size:0.7rem;
     letter-spacing:0.2em;
-    color:var(--dim);
+    color:var(--muted);
     text-transform:uppercase;
     margin-top:24px;
     display:block;
+    text-decoration:none;
+  }
+  .footer-url:hover { color:var(--cyan); text-decoration:underline; text-underline-offset:0.25em; }
+  .footer-url:focus-visible {
+    outline:2px solid var(--cyan);
+    outline-offset:6px;
+    border-radius:2px;
   }
 
   /* ── RESPONSIVE ── */
@@ -635,7 +634,6 @@
     <div>
       <div class="human-eyebrow">Founder · Also In A Pile</div>
       <div class="human-name">Darcy McCabe</div>
-      <div class="human-title">Founder &nbsp;·&nbsp; Also In A Pile</div>
       <p class="human-bio">
         Built this because <strong>I needed it.</strong> I have a doom pile. Several, actually.
         The hoodie on the barbell? That's real.<br><br>
@@ -657,7 +655,7 @@
     <strong>Built by someone with the pile.</strong><br>
     For everyone with the pile.
   </p>
-  <span class="footer-url">doompiledestroyer.app</span>
+  <a class="footer-url" href="https://doompiledestroyer.app/" target="_blank" rel="noopener noreferrer">doompiledestroyer.app</a>
 </div>
 
 <script>
