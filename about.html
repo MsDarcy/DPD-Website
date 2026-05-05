@@ -6,7 +6,7 @@
 <title>Meet The Team — Doom Pile Destroyer</title>
 <style>
 
-  @import url('https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Syne:wght@400;600;700;800;900&family=Playfair+Display:ital,wght@0,700;0,900;1,400&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Syne:wght@400;600;700;800;900&family=Playfair+Display:ital,wght@0,700;0,900;1,400&family=VT323&display=swap');
 
   :root {
     --bg:      #080410;
@@ -88,22 +88,64 @@
     display:inline-block;
   }
 
-  .hero h1 {
-    font-family:'Syne',sans-serif;
-    font-weight:900;
-    font-size:clamp(2.8rem,9vw,7rem);
-    line-height:0.95;
+  /* Arcade / CRT headline — VT323 pixel font + scanlined gradients */
+  .hero h1.hero-headline {
+    font-family:'VT323',monospace;
+    font-weight:400;
+    font-size:clamp(3.5rem,13vw,6.85rem);
+    line-height:0.9;
     position:relative;
     margin-bottom:8px;
+    letter-spacing:0.04em;
+    text-transform:uppercase;
   }
 
-  .hero h1 .line1 { color:var(--yellow); display:block; }
+  .hero h1.hero-headline::before {
+    content:'';
+    position:absolute;
+    left:50%;
+    transform:translateX(-50%);
+    width:min(95vw,700px);
+    top:-14%;
+    bottom:-16%;
+    z-index:-1;
+    pointer-events:none;
+    opacity:0.9;
+    background:
+      radial-gradient(ellipse 55% 75% at 50% 45%,rgba(120,55,170,0.45) 0%,transparent 68%),
+      repeating-linear-gradient(90deg,rgba(180,100,255,0.11) 0 1px,transparent 1px 48px),
+      repeating-linear-gradient(0deg,rgba(180,100,255,0.09) 0 1px,transparent 1px 48px);
+  }
+
+  .hero h1 .line1,
   .hero h1 .line2 {
-    background:linear-gradient(90deg,var(--pink) 0%,var(--purple) 100%);
-    -webkit-background-clip:text;
-    -webkit-text-fill-color:transparent;
-    background-clip:text;
     display:block;
+    color:transparent;
+    -webkit-background-clip:text;
+    background-clip:text;
+    -webkit-text-fill-color:transparent;
+  }
+
+  /* Line 1: yellow → orange + horizontal scan texture */
+  .hero h1 .line1 {
+    background-image:
+      repeating-linear-gradient(180deg,rgba(255,255,255,0.2) 0 1px,transparent 1px 3px),
+      linear-gradient(180deg,#fffef0 0%,#fff066 22%,#ffd000 52%,#ff9a26 82%,#ff6b35 100%);
+    filter:
+      drop-shadow(0 0 1px rgba(255,245,170,1))
+      drop-shadow(0 0 14px rgba(255,215,70,0.65))
+      drop-shadow(0 0 42px rgba(255,140,40,0.42));
+  }
+
+  /* Line 2: magenta → violet + scan texture */
+  .hero h1 .line2 {
+    background-image:
+      repeating-linear-gradient(180deg,rgba(255,255,255,0.14) 0 1px,transparent 1px 3px),
+      linear-gradient(180deg,#ff7eb8 0%,#ff2d96 38%,#c93bff 74%,#5c1faa 100%);
+    filter:
+      drop-shadow(0 0 1px rgba(255,130,230,1))
+      drop-shadow(0 0 16px rgba(255,65,165,0.55))
+      drop-shadow(0 0 46px rgba(160,65,255,0.42));
   }
 
   .hero-sub {
@@ -481,9 +523,9 @@
 <section class="hero">
   <div class="hero-glow"></div>
   <div class="hero-eyebrow">// Classified Personnel Files //</div>
-  <h1>
-    <span class="line1">MEET THE</span>
-    <span class="line2">TEAM</span>
+  <h1 class="hero-headline">
+    <span class="line1">Meet the</span>
+    <span class="line2">Team</span>
   </h1>
   <p class="hero-sub">
     A ragtag group of visionaries, chaos theorists, and <em>one hoodie of unknown location.</em>
